@@ -15,6 +15,8 @@ class Game
         @command = Command::Help
         @quit = false
 
+        Ansi.resize(32, 140)
+
         Curses.initscr()
         Curses.curs_set(0)
         Curses.cbreak()

@@ -7,4 +7,8 @@ module Ansi
   def self.move(l : Int32, c : Int32)
     print "\33[#{l+1};#{c+1}H"
   end
+
+  def self.resize(l : Int32, c : Int32)
+    print "\33[8;#{l};#{c}t"
+  end
 end
