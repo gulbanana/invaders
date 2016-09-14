@@ -1,4 +1,5 @@
 enum Command
+    None
     Help
     Left
     Right
