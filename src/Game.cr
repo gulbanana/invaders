@@ -7,9 +7,9 @@ class Game
         @boss = Sprite.new([Data::MOTHERSHIP])
         @boss_x = Bouncer.new(6)
         
-        @army1 = (1..4).map { Sprite.new([Data::ENEMY_2_DOWN, Data::ENEMY_2_DOWN, Data::ENEMY_2_UP, Data::ENEMY_2_UP]) }
-        @army2 = (1..4).map { Sprite.new([Data::ENEMY_1_DOWN, Data::ENEMY_1_UP]) } 
-        @army3 = (1..4).map { Sprite.new([Data::ENEMY_1_DOWN, Data::ENEMY_1_UP]) }
+        @army1 = (1..4).map { Sprite.new([Data::ENEMY_2_DOWN, Data::ENEMY_2_DOWN, Data::ENEMY_2_DOWN, Data::ENEMY_2_DOWN, Data::ENEMY_2_UP, Data::ENEMY_2_UP, Data::ENEMY_2_UP]) }
+        @army2 = (1..4).map { Sprite.new([Data::ENEMY_1_DOWN, Data::ENEMY_1_UP, Data::ENEMY_1_UP]) } 
+        @army3 = (1..4).map { Sprite.new([Data::ENEMY_1_DOWN, Data::ENEMY_1_DOWN, Data::ENEMY_1_UP, Data::ENEMY_1_UP]) }
         @army_x = Bouncer.new(3)
 
         @player = Sprite.new([Data::PLAYER])
