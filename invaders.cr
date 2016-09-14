@@ -1,4 +1,4 @@
-require "./invaders/*"
+require "./src/*"
 
 game = Game.new()
 
