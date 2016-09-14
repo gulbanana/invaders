@@ -2,8 +2,11 @@ require "./src/*"
 
 game = Game.new()
 
-while true
+while !game.quit
   sleep 0.4
-  game.draw()
+  game.poll()
   game.tick()
+  game.draw()
 end
+
+system "clear"

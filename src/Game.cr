@@ -11,6 +11,13 @@ class Game
         @army2 = (1..4).map { Sprite.new([Data::ENEMY_1_DOWN, Data::ENEMY_1_UP]) } 
         @army3 = (1..4).map { Sprite.new([Data::ENEMY_1_DOWN, Data::ENEMY_1_UP]) }
         @army_x = Bouncer.new(3)
+
+        @command = Command::Help
+        @quit = false
+
+        Curses.initscr()
+        Curses.curs_set(0)
+        Curses.cbreak()
     end
 
     def draw()
@@ -35,10 +42,46 @@ class Game
             s.draw(@army_x.x + offset, 21)
             offset += 1
         end
+
+        if (@command == Command::Help)
+            Ansi.move(28, 0)
+            puts "spacebar : fire"
+            Ansi.move(29, 0)
+            puts ", : move left\ntest"
+            Ansi.move(30, 0)
+            puts ". : move right"
+            Ansi.move(31, 0)
+            puts "q : quit"
+        end
+    end
+
+    def poll()
+        input = Curses.getch() 
+        if (input == 44)
+            @command = Command::Left
+        elsif (input == 46)
+            @command = Command::Right
+        elsif (input == 32)
+            @command = Command::Fire
+        elsif (input == 113)
+            @command = Command::Quit
+        elsif (input == -1)
+        else
+            @command = Command::Help
+        end
     end
 
     def tick()
         @boss_x.tick()
         @army_x.tick()
+
+        if (@command == Command::Quit)
+            Curses.endwin()
+            @quit = true
+        end
+    end
+
+    def quit
+        return @quit
     end
 end
